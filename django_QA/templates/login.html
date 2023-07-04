@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      {% load static %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Gentelella Alela! | </title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'css/vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+{#    <link href="../static/css/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">#}
+    <!-- Font Awesome -->
+    <link href="{% static 'css/vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+{#    <link href="../static/css/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">#}
+    <!-- NProgress -->
+    <link href="{% static 'css/vendors/nprogress/nprogress.css' %}" rel="stylesheet">
+{#    <link href="../static/css/vendors/nprogress/nprogress.css" rel="stylesheet">#}
+    <!-- Animate.css -->
+    <link href="{% static 'css/vendors/animate.css/animate.min.css' %}" rel="stylesheet">
+{#    <link href="../static/css/vendors/animate.css/animate.min.css" rel="stylesheet">#}
+
+    <!-- Custom Theme Style -->
+    <link href="{% static 'css/build/css/custom.min.css' %}" rel="stylesheet">
+{#    <link href="../static/css/build/css/custom.min.css" rel="stylesheet">#}
+  </head>
+
+  <body class="login">
+  {% load static %}
+    <div>
+      <a class="hiddenanchor" id="signup"></a>
+      <a class="hiddenanchor" id="signin"></a>
+
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+            <form method="post" action="http://10.225.21.132:8888/api/mgr/signin" enctype="multipart/form-data">
+              <h1>登录QA系统</h1>
+              <div>
+                <input type="text" class="form-control" placeholder="Username" name="username" required />
+{#                <input type="text" placeholder="Username" required="" />#}
+              </div>
+              <div>
+                <input type="password" class="form-control" placeholder="Password" name="password" required />
+{#                <input type="password" placeholder="Password" required="" />#}
+              </div>
+              <div>
+{#                <a class="btn btn-default submit" href="http://10.225.21.132:8888/QAPlatform/index/" >登录</a>#}
+                <a class="btn btn-default submit" ><input type="submit" value="登录"/></a>
+
+                <a class="reset_pass" href="#" >忘记密码?</a>
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">一个新的用户?
+                  <a href="#signup" class="to_register"> 注册账号 </a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                  <h1><i class="fa fa-paw"></i> 这是一个神奇的QA系统</h1>
+<!--                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 4 template. Privacy and Terms</p>-->
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+
+        <div id="register" class="animate form registration_form">
+          <section class="login_content">
+            <form>
+              <h1>注册账号</h1>
+              <div>
+                <input type="text" class="form-control" placeholder="用户名Username" required="" />
+              </div>
+              <div>
+                <input type="email" class="form-control" placeholder="邮箱Email" required="" />
+              </div>
+              <div>
+                <input type="password" class="form-control" placeholder="密码Password" required="" />
+              </div>
+              <div>
+                <a class="btn btn-default submit" href="index.html">注册</a>
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">已经有账号 ?
+                  <a href="#signin" class="to_register"> 登录 </a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                  <h1><i class="fa fa-paw"></i> 这是一个神奇的QA系统</h1>
+{#                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 4 template. Privacy and Terms</p>#}
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

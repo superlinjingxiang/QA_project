@@ -1,0 +1,56 @@
+'''
+    linjingxiang的公司Gittoken
+    :param request:
+    :return:
+    '''
+
+    URL = 'https://code.dobest.com'
+    TOKEN = 'RNQn7dHzK1JWE6m52Yrx'
+
+    gl = gitlab.Gitlab(URL, TOKEN)
+    gl.auth()  # 安全认证
+
+    # result_project_id = []
+    # for each in gl.projects.list(all=True):
+    #     # each是每个项目的信息，这里只保存名称和ID，如果想要其他信息，可以自行打印出来，按需获取
+    #     result_project_id.append([each.name, each.id])
+    # print(result_project_id)
+    #
+    result_projectid_branch = []
+    for each in gl.projects.get(id='270').branches.list(all=True):
+        # each是每个分支的信息，这里只保存名称，如果想要其他信息，可以自行打印出来，按需获取
+        result_projectid_branch.append(each.name)
+    # print(result_projectid_branch)
+    # ['2018_lua_2.1.15', 'IOS_SDK', 'IOS_SDK_WWISE', 'ManualSkill', 'PlotEditor_9_9', 'ZAY_0223', 'dev_0903',
+    #  'dev_0903_banshu', 'dev_Experience', 'dev_Luoying', 'dev_banshu', 'dev_net', 'dev_test', 'dev_zip', 'develop',
+    #  'dispel_over', 'hw_722', 'hw_722_fix', 'hw_728', 'hw_830', 'hw_pre_release', 'hw_pre_release_426',
+    #  'hw_pre_release_506', 'hw_pre_release_520', 'hw_release', 'hw_tw_shenhe', 'hw_tw_shenhe_hebing', 'jiayuan',
+    #  'master', 'mijuan', 'no_sanxiao', 'rechargeFunc', 'spine_runtime_upgrade', 'testEmail_fuqiang', 'tw_test_1014',
+    #  'tw_test_1014_fix', 'tw_test_1014_fix_youhua', 'xlua_2.1.16', 'zay_0303', 'zd', 'zheng_1018']
+
+    # 查找所有项目，并按照项目id升序排列
+    projects = gl.projects.list(all=True, order_by='id', sort='asc')
+    # print(projects)
+
+    # <Project id:270 path_with_namespace:fcstudio/xiaohe_client>  <Project id:276 path_with_namespace:fcstudio/common>
+    # project_xiaohe = gl.projects.get(270).branches.get('develop')
+    """
+    获取到两个分支的git对象
+    """
+    project_xiaohe = gl.projects.get(270)
+    project_xiaohe_common = gl.projects.get(276)
+
+    # project_xiaohes = gl.projects.get(270).branches.list(branch='develop',since='2023-04-13T00:00:00Z')
+
+    """
+    获取提交记录    1、先获取到提交记录的所有集合     通过一堆记录里面的id来取一个
+    """
+    # 获取所有commit
+    commits = project_xiaohe.commits.list(since='2023-04-19T00:00:00Z')
+    # commit = project_xiaohe.commits.get('1eda5eeb3ed2b302a2c1a63908652dc0a29d8e7a')
+
+    for commit in commits:
+        commit_object = project_xiaohe.commits.get(commit.id)
+        print(commit.id)
+        print(commit_object)
+        print(commit_object.message, commit_object.title, commit_object.created_at, commit_object.author_name)

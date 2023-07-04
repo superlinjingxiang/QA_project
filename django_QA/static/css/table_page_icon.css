@@ -1,0 +1,19 @@
+.page-icon{
+	width: 1200px;
+	margin: 50px auto 0;
+	font-size:0;
+	text-align:center;
+}
+.page-icon button {
+	border: none;
+	background-color: #efefef;
+	padding:4px 10px 5px;
+	font-size:20px;
+}
+.page-icon button:nth-child(3), .page-icon button:nth-child(4) {
+	cursor: default;
+}
+.page-icon button img {
+	width: 40px;
+	height: 30px;
+}
